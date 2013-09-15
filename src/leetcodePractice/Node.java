@@ -16,12 +16,16 @@ public class Node {
 	}
 	
 	public void addLeft(Node node){
-		this.left = node;
-		node.parents = this;
+		if(node != null){
+			this.left = node;
+			node.parents = this;
+		}
 	}
 	
 	public void addRight(Node node){
-		this.right = node;
-		node.parents = this;
+		if(node != null){
+			this.right = node;
+			node.parents = this;
+		}
 	}
 }
