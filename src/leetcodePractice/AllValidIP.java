@@ -104,6 +104,6 @@ public class AllValidIP {
 	public static void main(String [] args){
 		String IP = "25525511135";
 		AllValidIP avi = new AllValidIP();
-		System.out.println(avi.removeUnValid(avi.allIP(IP, 0)));
+		System.out.println(avi.allIP(IP, 0));
 	}
 }
