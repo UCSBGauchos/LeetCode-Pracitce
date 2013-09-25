@@ -5,10 +5,12 @@ public class Node {
 	Node left;
 	Node right;
 	Node parents;
+	Node next;
 	boolean visited;
 	
 	public Node(int _value){
 		this.value = _value;
+		this.next = null;
 		this.left=null;
 		this.right=null;
 		this.parents = null;
@@ -26,6 +28,12 @@ public class Node {
 		if(node != null){
 			this.right = node;
 			node.parents = this;
+		}
+	}
+	
+	public void addNext(Node node){
+		if(node != null){
+			this.next = node;
 		}
 	}
 }
