@@ -16,16 +16,12 @@ public class ReverseLinkedList {
 	
 	public Node swapEven(Node node, int index, int mid){
 		if(index == mid){
-//			System.out.println(node.value);
-//			System.out.println(node.next.value);
 			int tmp = node.value;
 			node.value = node.next.value;
 			node.next.value = tmp;
 			return node.next;
 		}
 		Node nextNode = swapEven(node.next, index+1, mid);
-//		System.out.println(node.value);
-//		System.out.println(nextNode.next.value);
 		int tmp = node.value;
 		node.value = nextNode.next.value;
 		nextNode.next.value = tmp;
@@ -37,8 +33,6 @@ public class ReverseLinkedList {
 			return node;
 		}
 		Node nextNode = swapOdd(node.next, index+1, mid);
-//		System.out.println(node.value);
-//		System.out.println(nextNode.next.value);
 		int tmp = node.value;
 		node.value = nextNode.next.value;
 		nextNode.next.value = tmp;
