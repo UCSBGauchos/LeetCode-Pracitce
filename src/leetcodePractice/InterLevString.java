@@ -1,10 +1,10 @@
 package leetcodePractice;
 
 public class InterLevString {
-	
+	//DPA is for cIndex and aIndex, to store the subproblem result
 	public BooleanNode [][] DPArrayForA;
 	public BooleanNode [][] DPArrayForB;
-	//DPArray[aIndex][bIndex] means whether c[aIndex+bIndex] is from a[aIndex] or b[bIndex]
+	
 	public void createDPArrayA (int row, int col){
 		DPArrayForA = new BooleanNode[row][col];
 		for(int i=0; i<row; i++){
