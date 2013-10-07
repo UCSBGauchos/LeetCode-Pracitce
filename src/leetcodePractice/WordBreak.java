@@ -9,24 +9,21 @@ import java.util.Set;
 
 public class WordBreak {
 	
-	Map<String, Boolean> DPmap = new HashMap<String, Boolean>();
+	ArrayList<String> DPcache = new ArrayList<String>();
 	public boolean wordBreak(String s, Set<String> dict){
 		if(dict.contains(s)){
 			return true;
 		}
 		for(int i = 1; i<=s.length(); i++){
 			String firstPart = s.substring(0,i);
-			String remain = s.substring(i);
 			if(dict.contains(firstPart)){
-				if(DPmap.containsKey(remain)){
-					if(DPmap.get(remain)){
+				String remain = s.substring(i);
+				if(!DPcache.contains(remain)){
+					boolean result = wordBreak(remain, dict);
+					if(result==true){
 						return true;
-					}
-				}else{
-					Boolean result = wordBreak(remain, dict);
-					DPmap.put(remain, result);
-					if(result){
-					    return true;
+					}else{
+						DPcache.add(remain);
 					}
 				}
 			}
