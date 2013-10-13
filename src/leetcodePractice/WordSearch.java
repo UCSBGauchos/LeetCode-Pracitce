@@ -32,30 +32,42 @@ public class WordSearch {
 		if(last.charAt(0)==board[row][col]){
 			if(row>=1&&visited[row-1][col]==false){
 				up = traverse(row-1, col, board, remain, visited);
+				if(up == true){
+					return true;
+				}
 			}
 			if(row<=board.length-2&&visited[row+1][col]==false){
 				down = traverse(row+1, col, board, remain, visited);
+				if(down == true){
+					return true;
+				}
 			}
 			if(col>=1&&visited[row][col-1]==false){
 				left = traverse(row, col-1, board, remain, visited);
+				if(left == true){
+					return true;
+				}
 			}
 			if(col<=board[0].length-2&&visited[row][col+1]==false){
 				right = traverse(row, col+1, board, remain, visited);
+				if(right == true){
+					return true;
+				}
 			}
 			visited[row][col] = false;
-			return (up||down||left||right);
-			
+			return false;
+
 		}else{
 			visited[row][col] = false;
 			return false;
 		}
-		
+
 	}
-	
+
 	public static void main(String [] args){
 		WordSearch ws = new WordSearch();
 		char [][] boad = {{'a','b'},{'c','d'}};
-		String word = "cabd";
+		String word = "cdba";
 		System.out.println(ws.exist(boad, word));
 	}
 }
