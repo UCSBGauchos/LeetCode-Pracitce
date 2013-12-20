@@ -2,7 +2,17 @@ package leetcodePractice;
 
 import java.util.HashMap;
 
-public class NumberToRom {
+public class RomToInt {
+	
+	public int romanToInt(String s) {
+		for(int i=1; i<=3999; i++){
+			String rom = intToRoman(i);
+			if(rom.equals(s)){
+				return i;
+			}
+		}
+		return 0;
+    }
 	
 	public String intToRoman(int num) {
 		HashMap<Integer, String> numberDict = new HashMap<Integer, String>();
@@ -128,8 +138,8 @@ public class NumberToRom {
     }
 	
 	public static void main(String [] args){
-		int x = 500;
-		NumberToRom n = new NumberToRom();
-		System.out.println(n.intToRoman(x));
+		String x = "MMMDCCCIX";
+		RomToInt r = new RomToInt();
+		System.out.println(r.romanToInt(x));
 	}
 }
