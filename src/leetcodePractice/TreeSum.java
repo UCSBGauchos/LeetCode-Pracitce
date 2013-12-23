@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TreeSum {
-	
-	
-	
 	public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
 		HashMap<ArrayList<Integer>, Boolean> hash = new HashMap<ArrayList<Integer>, Boolean>();
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
