@@ -5,8 +5,11 @@ import java.util.HashMap;
 
 public class telephoneNumber {
 	public ArrayList<String> letterCombinations(String digits) {
-		if(digits==""){
-			return new ArrayList<String>();
+		if(digits.equals("")){
+			String newString = "";
+			ArrayList<String> resultArrayList = new ArrayList<String>();
+			resultArrayList.add(newString);
+			return resultArrayList;
 		}
 		HashMap<Character, String> hash = new HashMap<Character, String>();
 		hash.put('2', "abc");
