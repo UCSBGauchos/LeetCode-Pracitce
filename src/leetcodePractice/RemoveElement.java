@@ -15,9 +15,6 @@ public class RemoveElement {
 				i--;
 			}
 		}
-		for(int i: A){
-			System.out.print(i);
-		}
 		return length;
     }
 	
