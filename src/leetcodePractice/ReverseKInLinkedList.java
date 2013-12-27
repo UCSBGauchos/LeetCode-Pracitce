@@ -73,6 +73,7 @@ public class ReverseKInLinkedList {
 	}
 	
 	public ListNode reverseKGroup(ListNode head, int k){
+		ListNode trueHead = head;
 		if(k==1){
 			return head;
 		}
@@ -96,7 +97,11 @@ public class ReverseKInLinkedList {
 			ListNode nextNode = jump(reverseHeadList.get(i), k);
 			nextNode.next = reverseHeadList.get(i+1);
 		}
-		return reverseHeadList.get(0);
+		if(reverseHeadList.size()>0){
+			return reverseHeadList.get(0);
+		}else{
+			return trueHead;
+		}
 	}
 	
 	public static void main(String [] args){
@@ -108,14 +113,14 @@ public class ReverseKInLinkedList {
 		ListNode n6 = new ListNode(6);
 		
 		
-		n1.next = n2;
+		//n1.next = n2;
 		n2.next = n3;
 		n3.next = n4;
 		n4.next = n5;
 		n5.next = n6;
 		
 		ReverseKInLinkedList r = new ReverseKInLinkedList();
-		ListNode head = r.reverseKGroup(n1, 1);
+		ListNode head = r.reverseKGroup(n1, 2);
 		while(head!=null){
 			System.out.print(head.val);
 			head = head.next;
