@@ -18,31 +18,31 @@ public class ValidSudoku {
 				int rowSection = i/3;
 				int colSection = j/3;
 				
-				if(i!=0+rowSection&&j!=0+colSection&&board[i][j]!='.'&&board[0+rowSection][0+colSection] == board[i][j]){
+				if(i!=0+rowSection*3&&j!=0+colSection*3&&board[i][j]!='.'&&board[0+rowSection*3][0+colSection*3] == board[i][j]){
 					return false;
 				}
-				if(i!=0+rowSection&&j!=1+colSection&&board[i][j]!='.'&&board[0+rowSection][1+colSection] == board[i][j]){
+				if(i!=0+rowSection*3&&j!=1+colSection*3&&board[i][j]!='.'&&board[0+rowSection*3][1+colSection*3] == board[i][j]){
 					return false;
 				}
-				if(i!=0+rowSection&&j!=2+colSection&&board[i][j]!='.'&&board[0+rowSection][2+colSection] == board[i][j]){
+				if(i!=0+rowSection*3&&j!=2+colSection*3&&board[i][j]!='.'&&board[0+rowSection*3][2+colSection*3] == board[i][j]){
 					return false;
 				}
-				if(i!=1+rowSection&&j!=0+colSection&&board[i][j]!='.'&&board[1+rowSection][0+colSection] == board[i][j]){
+				if(i!=1+rowSection*3&&j!=0+colSection*3&&board[i][j]!='.'&&board[1+rowSection*3][0+colSection*3] == board[i][j]){
 					return false;
 				}
-				if(i!=1+rowSection&&j!=1+colSection&&board[i][j]!='.'&&board[1+rowSection][1+colSection] == board[i][j]){
+				if(i!=1+rowSection*3&&j!=1+colSection*3&&board[i][j]!='.'&&board[1+rowSection*3][1+colSection*3] == board[i][j]){
 					return false;
 				}
-				if(i!=1+rowSection&&j!=2+colSection&&board[i][j]!='.'&&board[1+rowSection][2+colSection] == board[i][j]){
+				if(i!=1+rowSection*3&&j!=2+colSection*3&&board[i][j]!='.'&&board[1+rowSection*3][2+colSection*3] == board[i][j]){
 					return false;
 				}
-				if(i!=2+rowSection&&j!=0+colSection&&board[i][j]!='.'&&board[2+rowSection][0+colSection] == board[i][j]){
+				if(i!=2+rowSection*3&&j!=0+colSection*3&&board[i][j]!='.'&&board[2+rowSection*3][0+colSection*3] == board[i][j]){
 					return false;
 				}
-				if(i!=2+rowSection&&j!=1+colSection&&board[i][j]!='.'&&board[2+rowSection][1+colSection] == board[i][j]){
+				if(i!=2+rowSection*3&&j!=1+colSection*3&&board[i][j]!='.'&&board[2+rowSection*3][1+colSection*3] == board[i][j]){
 					return false;
 				}
-				if(i!=2+rowSection&&j!=2+colSection&&board[i][j]!='.'&&board[2+rowSection][2+colSection] == board[i][j]){
+				if(i!=2+rowSection*3&&j!=2+colSection*3&&board[i][j]!='.'&&board[2+rowSection*3][2+colSection*3] == board[i][j]){
 					return false;
 				}
 			}
@@ -60,7 +60,7 @@ public class ValidSudoku {
 		board[0][2] = '.';
 		board[1][0] = '6';
 		board[1][1] = '.';
-		board[1][2] = '9';
+		board[1][2] = '.';
 		board[2][0] = '.';
 		board[2][1] = '9';
 		board[2][2] = '8';
