@@ -23,11 +23,13 @@ public class UniquePath {
 			goRight = cache.get(rightPoint);
 		}else{
 			goRight = help(m, n-1, cache);
+			cache.put(rightPoint, goRight);
 		}
 		if(cache.containsKey(downPoint)){
 			goDown = cache.get(downPoint);
 		}else{
 			goDown = help(m-1, n, cache);
+			cache.put(downPoint, goDown);
 		}
 		return goRight+goDown;
 	}
