@@ -3,6 +3,9 @@ package leetcodePractice;
 public class CreateSpiralMatrix {
 	
 	public int[][] generateMatrix(int n) {
+		if(n == 0){
+			return new int[0][0];
+		}
 		int [][] spiralMatrix = new int [n][n];
 		int number = 1;
 		for(int layer = 0; layer<=n/2; layer++){
