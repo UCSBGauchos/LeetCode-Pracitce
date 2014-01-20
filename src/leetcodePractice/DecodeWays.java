@@ -15,7 +15,6 @@ public class DecodeWays {
 	}
 	
 	public int help(String s, HashMap<String, Integer> hash){
-		System.out.println(s);
 		if(s.length() == 1&&!s.equals("0")){
 			return 1;
 		}else if(s.length() == 0){
