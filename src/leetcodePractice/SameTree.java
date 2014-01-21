@@ -5,74 +5,76 @@ import java.util.ArrayList;
 public class SameTree {
 		
 	
-	public void convertPre(Node node, ArrayList<Integer> pre){
+	public void convertPre(TreeNode node, ArrayList<String> pre){
 		if(node == null){
+			pre.add("#");
 			return;
 		}
-		pre.add(node.value);
+		pre.add(String.valueOf(node.val));
 		convertPre(node.left, pre);
 		convertPre(node.right, pre);
 	}
 	
-	public void convertIn(Node node, ArrayList<Integer> in){
+	public void convertIn(TreeNode node, ArrayList<String> in){
 		if(node == null){
+			in.add("#");
 			return;
 		}
 		convertIn(node.left, in);
-		in.add(node.value);
+		in.add(String.valueOf(node.val));
 		convertIn(node.right, in);
 		
 	}
 	
-	
-	public boolean isSame(ArrayList<Integer> in1, ArrayList<Integer> in2, ArrayList<Integer> pre1, ArrayList<Integer> pre2){
-		if(in1.size()!=in2.size() || pre1.size()!=pre2.size()){
+	public boolean isSameTree(TreeNode p, TreeNode q) {
+		if(p==null&&q==null){
+			return true;
+		}
+		ArrayList<String> pre1 = new ArrayList<String>();
+		ArrayList<String> pre2 = new ArrayList<String>();
+		ArrayList<String> in1 = new ArrayList<String>();
+		ArrayList<String> in2 = new ArrayList<String>();
+		convertPre(p, pre1);
+		convertPre(q, pre2);
+		convertIn(p, in1);
+		convertIn(q, in2);
+		if(pre2.size()!=pre1.size()){
 			return false;
 		}
-		for(int index = 0; index < in1.size(); index++){
-			if(in1.get(index) != in2.get(index)){
+		if(in1.size()!=in2.size()){
+			return false;
+		}
+		for(int i=0; i<pre1.size(); i++){
+			if(!pre1.get(i).equals(pre2.get(i))){
 				return false;
 			}
 		}
-		for(int index = 0; index < pre1.size(); index++){
-			if(pre1.get(index) != pre2.get(index)){
+		for(int i=0; i<in1.size(); i++){
+			if(!in1.get(i).equals(in2.get(i))){
 				return false;
 			}
 		}
 		return true;
-	}
+		
+    }
 	
 	public static void main(String [] args){
-		Node tree1N1 = new Node(1);
-		Node tree1N2 = new Node(2);
-		Node tree1N3 = new Node(3);
+		TreeNode tree1N1 = new TreeNode(0);
+		TreeNode tree1N2 = new TreeNode(-5);
 		
-		Node tree2N1 = new Node(1);
-		Node tree2N2 = new Node(2);
-		Node tree2N3 = new Node(3);
+		TreeNode tree2N1 = new TreeNode(0);
+		TreeNode tree2N2 = new TreeNode(-8);
 		
-		tree1N1.addLeft(tree1N2);
-		tree1N1.addRight(tree1N3);
+		//tree1N1.left = tree1N2;
 		
-		tree2N1.addLeft(tree2N2);
-		tree2N1.addRight(tree2N3);
+		//tree2N1.left = tree2N2;
 		
 		
 		
 		SameTree st = new SameTree();
+		System.out.println(st.isSameTree(tree1N1, tree2N1));
 
-		ArrayList<Integer> pre1 = new ArrayList<Integer>();
-		ArrayList<Integer> pre2 = new ArrayList<Integer>();
-		ArrayList<Integer> in1 = new ArrayList<Integer>();
-		ArrayList<Integer> in2 = new ArrayList<Integer>();
 		
-		st.convertIn(tree1N1, in1);
-		st.convertPre(tree1N1, pre1);
-		st.convertIn(tree2N1, in2);
-		st.convertPre(tree2N1, pre2);
-		
-		
-		System.out.println(st.isSame(in1, in2, pre1, pre2));
 		
 	}
 }
