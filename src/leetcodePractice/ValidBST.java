@@ -1,53 +1,43 @@
 package leetcodePractice;
 
+import java.util.ArrayList;
+
 public class ValidBST {
 	
-	public boolean isBST(Node node){
+	public void inOrderTraverse(TreeNode node, ArrayList<Integer> list){
 		if(node == null){
-			return true;
+			return;
 		}
-		boolean lefttResult = false;
-		boolean rightResult = false;
-		if(node.left!=null&&node.right!=null){
-			if(node.left.value<node.value&&node.right.value>node.value){
-				lefttResult = isBST(node.left);
-				rightResult = isBST(node.right);
-			}else{
+		inOrderTraverse(node.left, list);
+		list.add(node.val);
+		inOrderTraverse(node.right, list);
+	}
+	
+	public boolean isValidBST(TreeNode node){
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		inOrderTraverse(node, list);
+		for(int i = 1; i<list.size(); i++){
+			if(list.get(i)<=list.get(i-1)){
 				return false;
 			}
-		}else if(node.left!=null&&node.right==null){
-			if(node.left.value<node.value){
-				lefttResult = isBST(node.left);
-				rightResult = isBST(node.right);
-			}else{
-				return false;
-			}
-		}else if(node.right!=null&&node.left==null){
-			if(node.right.value>node.value){
-				lefttResult = isBST(node.left);
-				rightResult = isBST(node.right);
-			}else{
-				return false;
-			}
-		}else if(node.right==null&&node.left==null){
-			return true;
 		}
-		return lefttResult&rightResult;
+		return true;
+		
 	}
 	public static void main(String [] args){
-		Node n1 = new Node(1);
-		Node n2 = new Node(2);
-		Node n3 = new Node(3);
-		Node n4 = new Node(4);
-		Node n5 = new Node(5);
+		TreeNode n1 = new TreeNode(10);
+		TreeNode n2 = new TreeNode(5);
+		TreeNode n3 = new TreeNode(15);
+		TreeNode n4 = new TreeNode(6);
+		TreeNode n5 = new TreeNode(20);
 		
-		n3.addLeft(n2);
-		n2.addLeft(n1);
-		n3.addRight(n4);
-		n4.addRight(n5);
+		n1.left = n2;
+		n1.right = n3;
+		n3.left = n4;
+		n3.right = n5;
 		
 		ValidBST vb = new ValidBST();
-		System.out.println(vb.isBST(n3));
+		System.out.println(vb.isValidBST(n1));
 		
 		
 		
