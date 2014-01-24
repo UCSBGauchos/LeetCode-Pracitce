@@ -21,6 +21,6 @@ public class ConvertSortedArrayToBST {
 		ConvertSortedArrayToBST c = new ConvertSortedArrayToBST();
 		int [] num = {1,2,3,4,5};
 		TreeNode root = c.sortedArrayToBST(num);
-		System.out.println(root.left.right.val);
+		
 	}
 }
