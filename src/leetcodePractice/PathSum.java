@@ -6,110 +6,49 @@ import java.util.Stack;
 
 public class PathSum {
 	
-//	Stack<Node> path = new Stack<Node>();
-//	ArrayList<Stack<Node>> paths = new ArrayList<Stack<Node>>();
-//	
-//	
-//	public void getPath(Node n){
-//		if(n!=null){
-//			path.add(n);
-//		}
-//		if(n.left==null && n.right==null){
-//			Stack<Node> tmpStack = new Stack<Node>();
-//			Iterator<Node> it = path.iterator();
-//			while(it.hasNext()){
-//				Node node1 = it.next();  
-//                tmpStack.push(node1);
-//			}
-//			paths.add(tmpStack);
-//			path.pop();
-//			return;
-//		}
-//		if(n.left!=null){
-//			getPath(n.left);
-//		}
-//		if(n.right!=null){
-//			getPath(n.right);
-//		}
-//		path.pop();
-//	}
-	int max = 0;
-	public ArrayList<Integer> getPath(Node n){
-		int sum = 0;
-	
-		if(n.left == null && n.right==null){
-			ArrayList<Integer> children = new ArrayList<Integer>();
-			children.add(n.value);
-			return children;
+	public boolean help(TreeNode root, int sum, int count){
+		boolean result = false;
+		count = count+root.val;
+		System.out.println("count is now "+count);
+		if(root.left == null&&root.right == null&&count == sum){
+			return true;
 		}
-		if(n.left==null){
-			ArrayList<Integer> rightChildren = getPath(n.right);
-			ArrayList<Integer> newChildren = new ArrayList<Integer>();
-			for(int i: rightChildren){
-				int newValue = i+n.value;
-				newChildren.add(newValue);
-			}
-			return newChildren;
+		if(root.left!=null){
+			result = help(root.left, sum, count);
 		}
-		if(n.right==null){
-			ArrayList<Integer> leftChildren = getPath(n.left);
-			ArrayList<Integer> newChildren = new ArrayList<Integer>();
-			for(int i: leftChildren){
-				int newValue = i+n.value;
-				newChildren.add(newValue);
-			}
-			return newChildren;
+		if(result == true){
+			return true;
 		}
-		if(n.left != null && n.right!=null){
-			ArrayList<Integer> leftChildren = getPath(n.left);
-			ArrayList<Integer> rightChildren = getPath(n.right);
-			ArrayList<Integer> children = new ArrayList<Integer>();
-			children.addAll(leftChildren);
-			children.addAll(rightChildren);
-			ArrayList<Integer> newChildren = new ArrayList<Integer>();
-			for(int i: children){
-				int newValue = i+n.value;
-				newChildren.add(newValue);
-			}
-			return newChildren;
+		if(root.right!=null){
+			result = help(root.right, sum, count);
 		}
-		return null;
+		return result;
 	}
 	
+	public boolean hasPathSum(TreeNode root, int sum) {
+		int count = 0;
+		return help(root, sum, count);
+    }
+	
 	public static void main(String [] args){
-		Node level1n1 = new Node(5);
-		Node level2n1 = new Node(4);
-		Node level2n2 = new Node(8);
-		Node level3n1 = new Node(11);
-		Node level3n2 = new Node(13);
-		Node level3n3 = new Node(4);
-		Node level4n1 = new Node(7);
-		Node level4n2 = new Node(2);
-		Node level4n3 = new Node(1);
-		
-		level1n1.addLeft(level2n1);
-		level1n1.addRight(level2n2);
-		
-		level2n1.addLeft(level3n1);
-		level2n2.addLeft(level3n2);
-		level2n2.addRight(level3n3);
-		
-		level3n1.addLeft(level4n1);
-		level3n1.addRight(level4n2);
-		level3n3.addRight(level4n3);
-		
-		PathSum ps = new PathSum();
-//		ps.getPath(level1n1);
-//		for(Stack<Node> stack: ps.paths){
-//			int sum = 0;
-//			for(Node n: stack){
-//				sum+=n.value;
-//			}
-//			System.out.println(sum);
-//		}
-		ArrayList<Integer> result = ps.getPath(level1n1);
-		for(int i: result){
-			System.out.print(i+" ");
-		}
+		PathSum p = new PathSum();
+		TreeNode n1 = new TreeNode(5); 
+		TreeNode n2 = new TreeNode(4); 
+		TreeNode n3 = new TreeNode(8); 
+		TreeNode n4 = new TreeNode(11);
+		TreeNode n5 = new TreeNode(13);
+		TreeNode n6 = new TreeNode(4);
+		TreeNode n7 = new TreeNode(7);
+		TreeNode n8 = new TreeNode(2); 
+		TreeNode n9 = new TreeNode(1); 
+		n1.left = n2;
+		n1.right = n3;
+		n2.left = n4;
+		n3.left = n5;
+		n3.right = n6;
+		n4.left = n7;
+		n4.right = n8;
+		n5.right = n9;
+		System.out.println(p.hasPathSum(n1, 22));
 	}
 }
