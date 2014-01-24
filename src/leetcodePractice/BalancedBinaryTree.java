@@ -2,16 +2,16 @@ package leetcodePractice;
 
 public class BalancedBinaryTree {
 	
-	public boolean isBalanced(Node node){
-		if(node == null){
+	public boolean isBalanced(TreeNode root){
+		if(root == null){
 			return true;
 		}
-		int leftHeight = getHeight(node.left);
-		int rightHeight = getHeight(node.right);
+		int leftHeight = getHeight(root.left);
+		int rightHeight = getHeight(root.right);
 		int diff = Math.abs(rightHeight-leftHeight);
 		if(diff<=1){
-			boolean leftResult = isBalanced(node.left);
-			boolean rightResult = isBalanced(node.left);
+			boolean leftResult = isBalanced(root.left);
+			boolean rightResult = isBalanced(root.right);
 			boolean result = leftResult&rightResult;
 			return result;
 		}else{
@@ -19,7 +19,7 @@ public class BalancedBinaryTree {
 		}
 	}
 	
-	public int getHeight(Node root){
+	public int getHeight(TreeNode root){
 		if(root == null){
 			return 0;
 		}
@@ -27,18 +27,22 @@ public class BalancedBinaryTree {
 		return height;
 	}
 	public static void main(String [] args){
-		Node n1 = new Node(1);
-		Node n2 = new Node(2);
-		Node n3 = new Node(3);
-		Node n4 = new Node(4);
-		Node n5 = new Node(5);
-		Node n6 = new Node(6);
+		TreeNode n1 = new TreeNode(1);
+		TreeNode n2 = new TreeNode(2);
+		TreeNode n3 = new TreeNode(3);
+		TreeNode n4 = new TreeNode(4);
+		TreeNode n5 = new TreeNode(5);
+		TreeNode n6 = new TreeNode(6);
+		TreeNode n7 = new TreeNode(7);
+		TreeNode n8 = new TreeNode(8);
 		
-		n1.addLeft(n2);
-		n1.addRight(n3);
-		//n2.addLeft(n4);
-		//n2.addRight(n5);
-		n3.addLeft(n6);
+		n1.left = n2;
+		n1.right = n3;
+		n2.left = n4;
+		n2.right = n5;
+		n3.right = n6;
+		n4.left = n7;
+		n6.right = n8;
 		
 		BalancedBinaryTree bbt = new BalancedBinaryTree();
 		if(bbt.isBalanced(n1)){
