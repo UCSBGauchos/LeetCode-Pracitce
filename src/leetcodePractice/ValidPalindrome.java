@@ -50,7 +50,6 @@ public class ValidPalindrome {
 				for(i=0;i<mid;i++){
 					stack.push(alphaCharArray[i]);
 				}
-				System.out.println(stack);
 				for(int j=i+1;j<length;j++){
 					if(stack.pop()!=alphaCharArray[j]){
 						return false;
