@@ -9,7 +9,7 @@ public class PathSum {
 	public boolean help(TreeNode root, int sum, int count){
 		boolean result = false;
 		count = count+root.val;
-		System.out.println("count is now "+count);
+		//System.out.println("count is now "+count);
 		if(root.left == null&&root.right == null&&count == sum){
 			return true;
 		}
@@ -26,6 +26,9 @@ public class PathSum {
 	}
 	
 	public boolean hasPathSum(TreeNode root, int sum) {
+		if(root == null){
+			return false;
+		}
 		int count = 0;
 		return help(root, sum, count);
     }
