@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class PascalTrangle {
 	
 	public ArrayList<ArrayList<Integer>> generate(int numRows) {
+		if(numRows == 0){
+			return new ArrayList<ArrayList<Integer>>();
+		}
 		if(numRows == 1){
 			ArrayList<Integer> list = new ArrayList<Integer>();
 			ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
