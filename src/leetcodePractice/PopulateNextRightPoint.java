@@ -25,7 +25,11 @@ public class PopulateNextRightPoint {
 		ArrayList<ArrayList<TreeLinkNode>> result = new ArrayList<ArrayList<TreeLinkNode>>();
 		int level = 0;
 		help(root, result, level);
-		System.out.println(result);
+		for(ArrayList<TreeLinkNode> list: result){
+			for(int i=0 ;i<list.size()-1; i++){
+				list.get(i).next = list.get(i+1);
+			}
+		}
     }
 	
 	public static void main(String [] args){
