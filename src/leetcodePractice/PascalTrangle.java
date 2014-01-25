@@ -3,51 +3,47 @@ package leetcodePractice;
 import java.util.ArrayList;
 
 public class PascalTrangle {
-	public ArrayList<Integer> getPT(int number){
-		ArrayList<Integer> curList = new ArrayList<Integer>();
-//		if(number == 1){
-//			ArrayList<Integer> baseCase1 = new ArrayList<Integer>();
-//			System.out.println(number);
-//			baseCase1.add(1);
-//			System.out.print('1');
-//			System.out.println();
-//		}
-		if(number == 2){
-			ArrayList<Integer> baseCase2 = new ArrayList<Integer>();
-			System.out.println('1');
-			baseCase2.add(1);
-			baseCase2.add(1);
-			System.out.println(1+" "+1);
-			return baseCase2;
+	
+	public ArrayList<ArrayList<Integer>> generate(int numRows) {
+		if(numRows == 1){
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+			list.add(1);
+			result.add(list);
+			return result;
+		}else if(numRows == 2){
+			ArrayList<Integer> list1 = new ArrayList<Integer>();
+			ArrayList<Integer> list2 = new ArrayList<Integer>();
+			ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+			list1.add(1);
+			list2.add(1);
+			list2.add(1);
+			result.add(list1);
+			result.add(list2);
+			return result;
 		}
-		if(number>2){
-			ArrayList<Integer> preList = getPT(number-1);
-			int [] tmpPreArray = new int [number-1];
-			int index = 0;
-			for(int i: preList){
-				tmpPreArray[index] = i;
-				index++;
+		ArrayList<ArrayList<Integer>> prev = generate(numRows-1);
+		ArrayList<ArrayList<Integer>> cur = new ArrayList<ArrayList<Integer>>();
+		cur.addAll(prev);
+		int length = prev.size();
+		ArrayList<Integer> list = prev.get(length-1);
+		ArrayList<Integer> newList = new ArrayList<Integer>();
+		for(int i=0; i<list.size(); i++){
+			if(i == 0){
+				newList.add(1);
+			}else{
+				newList.add(list.get(i-1)+list.get(i));
 			}
-			int [] tmpCurArray = new int [number];
-			tmpCurArray[0] = tmpPreArray[0];
-			tmpCurArray[number-1] = tmpPreArray[number-2];
-			for(int i=1;i<number-1;i++){
-				tmpCurArray[i] = tmpPreArray[i-1]+tmpPreArray[i];
-			}
-			for(int i=0;i<number;i++){
-				curList.add(tmpCurArray[i]);
-				System.out.print(tmpCurArray[i]+" ");
-			}
-			System.out.println();
-			return curList;
 		}
-		return curList;
-	}
+		newList.add(1);
+		cur.add(newList);
+		return cur;
+    }
 	
 	public static void main(String [] args){
-		int number = 5;
-		PascalTrangle pt = new PascalTrangle();
-		pt.getPT(number);
-		
+		PascalTrangle p = new PascalTrangle();
+		int num = 0;
+		ArrayList<ArrayList<Integer>> result = p.generate(num);
+		System.out.println(result);
 	}
 }
