@@ -3,23 +3,23 @@ package leetcodePractice;
 import java.util.Stack;
 
 public class ValidPalindrome {
-	public boolean validOalindrome(String str){
+	public boolean isPalindrome(String str){
 		if(str==null){
 			return false;
 		}else if(str.equals("")){
 			return true;
 		}else{
 			char [] charArray = str.toCharArray();
-			int notAlpha = 0;
+			int Alpha = 0;
 			for(int i=0;i<charArray.length;i++){
-				if(charArray[i]<65||charArray[i]>122){
-					notAlpha++;
+				if((charArray[i]>=65&&charArray[i]<=90)||(charArray[i]>=48&&charArray[i]<=57)||(charArray[i]>=97&&charArray[i]<=122)){
+					Alpha++;
 				}
 			}
 			int index = 0;
-			char [] alphaCharArray = new char[charArray.length-notAlpha];
+			char [] alphaCharArray = new char[Alpha];
 			for(char c: charArray){
-				if(c>=65&&c<=122){
+				if((c>=65&&c<=90)||(c>=48&&c<=57)||(c>=97&&c<=122)){
 					if(c>=65&&c<=90){
 						c+=32;
 					}
@@ -29,7 +29,7 @@ public class ValidPalindrome {
 			}
 			boolean isOven = false;
 			int length = alphaCharArray.length;
-			if(length%2==0){
+			if(length%2==0&&length!=0){
 				isOven = true;
 			}
 			int mid = (length-1)/2;
@@ -48,26 +48,23 @@ public class ValidPalindrome {
 				Stack<Character> stack = new Stack<Character>();
 				int i=0;
 				for(i=0;i<mid;i++){
-					System.out.print(alphaCharArray[i]);
 					stack.push(alphaCharArray[i]);
 				}
-				System.out.println();
+				System.out.println(stack);
 				for(int j=i+1;j<length;j++){
-					System.out.print(alphaCharArray[j]);
 					if(stack.pop()!=alphaCharArray[j]){
 						return false;
 					}
 				}
-				System.out.println();
 			}
 		}
 		return true;
 	}
 	
 	public static void main(String [] args){
-		String str = "A man, a plan, a canal: Panama";
+		String str = "`l;`` 1o1 ??;l`";
 		ValidPalindrome vp = new ValidPalindrome();
-		if(vp.validOalindrome(str)){
+		if(vp.isPalindrome(str)){
 			System.out.println("The string is pali");
 		}else{
 			System.out.println("the string is not pali");
