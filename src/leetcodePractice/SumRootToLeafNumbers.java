@@ -25,8 +25,21 @@ public class SumRootToLeafNumbers {
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		help(root, list, result);
-		System.out.println(result);
-		return 0;
+		int [] sums = new int[result.size()];
+		int whole = 0;
+		int index = 0;
+		for(ArrayList<Integer> l: result){
+			int sum = 0;
+			for(int i: l){
+				sum = sum*10+i;
+			}
+			sums[index] = sum;
+			index++;
+		}
+		for(int i: sums){
+			whole+=i;
+		}
+		return whole;
     }
 	
 	public static void main(String [] args){
