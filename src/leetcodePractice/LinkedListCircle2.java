@@ -18,6 +18,9 @@ public class LinkedListCircle2 {
 	public ListNode detectCycle(ListNode head) {
 		ListNode meetPoint = MeetPoint(head);
 		ListNode startPoint = head;
+		if(meetPoint == null){
+			return null;
+		}
 		while(meetPoint!=startPoint){
 			meetPoint = meetPoint.next;
 			startPoint = startPoint.next;
