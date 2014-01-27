@@ -39,11 +39,11 @@ public class LongestConSeq {
 		}
 	}
 	
-	public int longestConsecutive(int [] array){
-		mergeSort(array, 0,array.length-1);
-		int [] helper = new int[array.length-1];
-		for(int i=1;i<array.length;i++){
-			helper[i-1] = array[i]-array[i-1];
+	public int longestConsecutive(int [] num){
+		mergeSort(num, 0,num.length-1);
+		int [] helper = new int[num.length-1];
+		for(int i=1;i<num.length;i++){
+			helper[i-1] = num[i]-num[i-1];
 		}
 		int longest = 0;
 		int number = 0;
