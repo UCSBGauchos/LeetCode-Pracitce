@@ -3,10 +3,10 @@ package leetcodePractice;
 public class GasStation {
 	
 	public boolean help(int curIndex, int oil, int finish, int [] gas, int [] cost){
-		System.out.println("Has finish "+finish);
-		System.out.println("Now at "+curIndex);
+		//System.out.println("Has finish "+finish);
+		//System.out.println("Now at "+curIndex);
 		int realIndex = curIndex%gas.length;
-		System.out.println("Need "+cost[realIndex]+" to go next");
+		//System.out.println("Need "+cost[realIndex]+" to go next");
 		finish = finish+1;
 		if(finish == gas.length){
 			return true;
