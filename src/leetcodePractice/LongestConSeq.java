@@ -39,7 +39,7 @@ public class LongestConSeq {
 		}
 	}
 	
-	public int getLongest(int [] array){
+	public int longestConsecutive(int [] array){
 		mergeSort(array, 0,array.length-1);
 		int [] helper = new int[array.length-1];
 		for(int i=1;i<array.length;i++){
@@ -63,6 +63,6 @@ public class LongestConSeq {
 	public static void main(String [] args){
 		int [] array = {100, 101,102, 103, 104,4, 200, 1, 3, 2};
 		LongestConSeq lcs = new LongestConSeq();
-		System.out.println("lcs is "+lcs.getLongest(array));
+		System.out.println("lcs is "+lcs.longestConsecutive(array));
 	}
 }
