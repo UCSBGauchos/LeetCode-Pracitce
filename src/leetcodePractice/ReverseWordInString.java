@@ -26,7 +26,6 @@ public class ReverseWordInString {
 				tmp = new StringBuffer();
 			}
 		}
-		System.out.println(list);
 		String [] strs = new String[list.size()];
 		for(int i=0; i<list.size(); i++){
 			strs[i] = list.get(i);
