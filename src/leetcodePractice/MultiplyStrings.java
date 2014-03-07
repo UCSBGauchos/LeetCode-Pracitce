@@ -62,8 +62,13 @@ public class MultiplyStrings {
 			 answer.add(prev2);
 		 }
 		 StringBuffer buffer = new StringBuffer();
+		 int isZero=0;
 		 for(int i=answer.size()-1; i>=0; i--){
+			 isZero+=answer.get(i);
 			 buffer.append((char)(answer.get(i)+48));
+		 }
+		 if(isZero == 0){
+			 return "0";
 		 }
 		 return buffer.toString();
 	 }
