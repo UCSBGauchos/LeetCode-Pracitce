@@ -59,12 +59,12 @@ public class NQueensTwo {
 		int [] boardRows = new int [n];
 		int row = 0;
 		help(boardRows, row, result, n);
-		for(int [] array: result){
-			for(int i: array){
-				System.out.print(i);
-			}
-			System.out.println();
-		}
+//		for(int [] array: result){
+//			for(int i: array){
+//				System.out.print(i);
+//			}
+//			System.out.println();
+//		}
 		
 		return result.size();
 	}
