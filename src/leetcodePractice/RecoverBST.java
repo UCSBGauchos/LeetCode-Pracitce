@@ -62,10 +62,10 @@ public class RecoverBST {
 	public void recoverTree(TreeNode root){
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		BSTList(root, list);
-		System.out.println(list);
+		//System.out.println(list);
 		ArrayList<Integer> twoWrongNumber = new ArrayList<Integer>();
 		twoWrongNumber = recoverList(list);
-		System.out.println(twoWrongNumber);
+		//System.out.println(twoWrongNumber);
 		help(root, twoWrongNumber);
 	}
 	
