@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Pascaltrangle2 {
 	public ArrayList<Integer> getRow(int rowIndex) {
-	
 		if(rowIndex == 0){
 			ArrayList<Integer> list = new ArrayList<Integer>();
 			list.add(1);
