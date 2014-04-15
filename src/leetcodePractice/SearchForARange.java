@@ -64,8 +64,9 @@ public class SearchForARange {
 		
 		SearchForARange s = new SearchForARange();
 		
-		int [] array = {2, 2};
-		int target = 2;
+		//[1,4][6,9]
+		int [] array = {1,2,3,4,6,7,8,9};
+		int target = 3;
 		
 		int [] result = s.searchRange(array, target);
 		
