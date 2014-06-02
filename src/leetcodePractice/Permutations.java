@@ -4,58 +4,42 @@ import java.util.ArrayList;
 
 public class Permutations {
 	
-	public ArrayList<String> helper(String str){
-		if(str.length() == 1){
-			ArrayList<String> list = new ArrayList<String>();
-			list.add(str);
-			return list;
+	public ArrayList<ArrayList<Integer>> helper(ArrayList<Integer> list){
+		if(list.size()==1){
+			ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+			result.add(list);
+			return result;
 		}
-		char c = str.charAt(0);
-		String remain = str.substring(1);
-		ArrayList<String> prev = helper(remain);
-		ArrayList<String> cur = helper(remain);
-		for(String s: prev){
-			for(int i=0; i<=s.length(); i++){
-				StringBuffer buffer = new StringBuffer(s);
-				buffer.insert(i, c);
-				cur.add(buffer.toString());
+		int first = list.get(0);
+		ArrayList<Integer> remain = new ArrayList<Integer>();
+		for(int i=1; i<list.size(); i++){
+			remain.add(list.get(i));
+		}
+		ArrayList<ArrayList<Integer>> prev = helper(remain);
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		for(ArrayList<Integer> preList: prev){
+			for(int i=0; i<=preList.size(); i++){
+				ArrayList<Integer> newList = new ArrayList<Integer>();
+				newList.addAll(preList);
+				newList.add(i, first);
+				result.add(newList);
 			}
 		}
-		return cur;
-		
+		return result;
 	}
 	
 	public ArrayList<ArrayList<Integer>> permute(int [] num) {
-		StringBuffer buffer = new StringBuffer();
+		ArrayList<Integer> list = new ArrayList<Integer>();
 		for(int i: num){
-			buffer.append(i);
+			list.add(i);
 		}
-		String str = buffer.toString();
-		ArrayList<String> tmpResult = helper(str);
-		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-		for(String s: tmpResult){
-			 if(s.length() == num.length){
-				 ArrayList<Integer> list = new ArrayList<Integer>();
-				 int [] array = new int[num.length];
-				 char [] charArray = s.toCharArray();
-				 for(char c: charArray){
-					 list.add(c-48);
-				 }
-				 result.add(list);
-			 }
-		}
-		return result;
+		return helper(list);
     }
 	
 	public static void main(String [] args){
 		Permutations p = new Permutations();
-		int [] num = {0,-1,1};
-		 ArrayList<ArrayList<Integer>> result = p.permute(num);
-		 for(ArrayList<Integer> list: result){
-			 for(int i: list){
-				 System.out.print(i);
-			 }
-			 System.out.println();
-		 }
+		int [] num = {1,2,3};
+		ArrayList<ArrayList<Integer>> result = p.permute(num);
+	    System.out.println(result);
 	}
 }
