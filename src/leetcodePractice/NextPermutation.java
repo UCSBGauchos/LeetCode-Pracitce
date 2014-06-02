@@ -1,12 +1,14 @@
 package leetcodePractice;
 
+import java.util.ArrayList;
+
 public class NextPermutation {
 	public void nextPermutation(int[] num) {
-		int i=0;
-	
-        for(i=num.length-1; i>=1; i--){
-        	
-        }
+		ArrayList<Integer> allPur = new ArrayList<Integer>();
+		for(int i: num){
+			allPur.add(i);
+		}
+		
     }
 	
 	public static void main(String [] args){
