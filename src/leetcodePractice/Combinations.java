@@ -4,57 +4,49 @@ import java.util.ArrayList;
 
 public class Combinations {
 	
-	public ArrayList<ArrayList<Integer>> removeDup(ArrayList<ArrayList<Integer>> lists){
-		ArrayList<ArrayList<Integer>> newResult = new ArrayList<ArrayList<Integer>>();
-		for(ArrayList<Integer> list: lists){
-			java.util.Collections.sort(list);
-			if(!newResult.contains(list)){
-				newResult.add(list);
+	public ArrayList<ArrayList<Integer>> help(int k, ArrayList<Integer> dict, ArrayList<ArrayList<Integer>> result){
+		//System.out.println(dict);
+		if(dict.size()==0){
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			ArrayList<ArrayList<Integer>> results = new ArrayList<ArrayList<Integer>>();
+			results.add(list);
+			return results;
+		}
+		int first = dict.get(0);
+		dict.remove(0);
+		ArrayList<ArrayList<Integer>> prev = help(k, dict, result);
+		ArrayList<ArrayList<Integer>> newlists = new ArrayList<ArrayList<Integer>>();
+		for(ArrayList<Integer> list: prev){
+			newlists.add(list);
+			ArrayList<Integer> newList = new ArrayList<Integer>();
+			newList.addAll(list);
+			newList.add(first);
+			newlists.add(newList);
+			if(newList.size()==k&&!result.contains(newList)){
+				java.util.Collections.sort(newList);
+				result.add(newList);
 			}
 		}
-		return newResult;
+		return newlists;
+		
 	}
 	
-	public ArrayList<ArrayList<Integer>> helperFunction(ArrayList<Integer> list, int k){
-		ArrayList<ArrayList<Integer>> all = new ArrayList<ArrayList<Integer>>();
-		if(k==1){
-			ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-			for(int number: list){
-				ArrayList<Integer> onePossible = new ArrayList<Integer>();
-				onePossible.add(number);
-				result.add(onePossible);
-			}
-			return result;
-		}
-		for(int i=0; i<list.size(); i++){
-			int choose = list.remove(i);
-			ArrayList<ArrayList<Integer>> pre = helperFunction(list, k-1);
-			for(ArrayList<Integer> preList: pre){
-				preList.add(choose);
-			}
-			list.add(choose);
-			java.util.Collections.sort(list);
-			all.addAll(pre);
-		}
-		return all;
-	}
-	
-	 public ArrayList<ArrayList<Integer>> combine(int n, int k) {
-		ArrayList<Integer> list = new ArrayList<Integer>();
+	public ArrayList<ArrayList<Integer>> combine(int n, int k){
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		ArrayList<Integer> dict = new ArrayList<Integer>();
 		for(int i=1; i<=n; i++){
-			list.add(i);
+			dict.add(i);
 		}
-		 ArrayList<ArrayList<Integer>> result = helperFunction(list, k);
-		 return result;
-	 }
-	 
-	 public static void main(String [] args){
-		 Combinations c = new Combinations();
-		 ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
-		 int scope = 10;
-		 int number = 7;
-		 lists = c.combine(scope, number);
-		 System.out.println(c.removeDup(lists));
-	 }
-	 
+		help(k, dict, result);
+		return result;
+	}
+	
+	public static void main(String [] args){
+		Combinations c = new Combinations();
+		int n=4;
+		int k=2;
+		
+		System.out.println(c.combine(n, k));
+		
+	}
 }

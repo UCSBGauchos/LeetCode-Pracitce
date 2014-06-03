@@ -4,39 +4,44 @@ import java.util.HashMap;
 
 public class JumpGame {
 	
-	public int helper(int [] A, int index, int goal, int minSteps, HashMap<Integer, Integer> cache){
-		if(index == goal){
-			return 0;
+	public boolean help(int [] A, int index, HashMap<Integer, Boolean> cache){
+		int maxLength = A[index];
+		// basecase
+		if(maxLength == 0&&index!=A.length-1){
+			return false;
 		}
-		for(int tryStep = 1; tryStep<=A[index]; tryStep++){
-			int newIndex = index+tryStep;
-			if(newIndex<=goal){
-				int steps = 0;
-				if(cache.containsKey(newIndex)){
-					steps = cache.get(newIndex);
+		if(index == A.length-1){
+			return true;
+		}
+		for(int i=1; i<=maxLength; i++){
+			int newIndex = index+i;
+			if(!cache.containsKey(newIndex)){
+				boolean result = help(A, newIndex, cache);
+				if(result){
+					cache.put(newIndex, true);
+				    return true;
 				}else{
-					steps = helper(A, newIndex, goal, minSteps, cache)+1;
-					cache.put(newIndex, steps);
+					cache.put(newIndex, false);
 				}
-				if(steps<minSteps){
-					minSteps = steps;
+			}else{
+				if(cache.get(newIndex)){
+					return true;
 				}
 			}
+			
 		}
-		return minSteps;
+		return false;
 	}
 	
-	public int jump(int[] A) {
-		int goal = A.length-1;
-		int index = 0;
-		int minSteps = 999999;
-		HashMap<Integer, Integer> cache = new HashMap<Integer, Integer>();
-		return helper(A, index, goal, minSteps, cache);
+	public boolean canJump(int[] A) {
+		int startPosition = 0;
+		HashMap<Integer, Boolean> cache = new HashMap<Integer, Boolean>(); 
+		return help(A, startPosition, cache);
     }
 	
 	public static void main(String [] args){
-		int [] A = {2,3,1,1,4};
 		JumpGame j = new JumpGame();
-		System.out.println(j.jump(A));
+		int [] A = {2,3,1,1,4};
+		System.out.println(j.canJump(A));
 	}
 }
