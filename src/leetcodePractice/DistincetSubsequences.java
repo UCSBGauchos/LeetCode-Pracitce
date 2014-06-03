@@ -1,47 +1,59 @@
 package leetcodePractice;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DistincetSubsequences {
 	
-	public ArrayList<String> help(String S, String T, ArrayList<Integer> cache){
-		if(S.length()==1){
-			ArrayList<String> list = new ArrayList<String>();
-			list.add("");
-			list.add(S);
-			return list;
+	int sum = 0;
+	
+	public int help(String S, String T, char [] dict){
+
+		if(T.length()-S.length()==0&&!S.equals(T)){
+			return 0;
+		}else if(T.length()-S.length()==0&&S.equals(T)){
+			return 1;
 		}
-		char c = S.charAt(0);
-		String remain = S.substring(1);
-		ArrayList<String> prev = help(remain, T, cache);
-		ArrayList<String> cur = new ArrayList<String>();
-		cur.addAll(prev);
-		for(String str: prev){
-			String newString = c+str;
-			if(newString.equals(T)){
-				cache.add(1);
+		
+		for(char c: dict){
+			for(int i=0; i<T.length(); i++){
+				StringBuffer buffer = new StringBuffer(T);
+				buffer.insert(i, c);
+				String newString = buffer.toString();
+				if(help(S, newString, dict)!=0){
+					sum++;
+				}
 			}
-			cur.add(newString);
 		}
-		return cur;
+		return 0;
 	}
 	
 	public int numDistinct(String S, String T) {
-		ArrayList<Integer> cache = new ArrayList<Integer>();
-		if(S.equals("")){
+		
+		if(S.length()<T.length()){
 			return 0;
 		}
-		int num = 0;
-		ArrayList<String> result = help(S,T,cache);
 		
-		
-		return cache.size();
-	}
+		HashMap<Character, Boolean> hash = new HashMap<Character, Boolean>();
+		char [] array = T.toCharArray();
+		for(char c: array){
+			hash.put(c, true);
+		}
+		char [] dict = new char[hash.keySet().size()];
+		int index = 0;
+		for(char c: hash.keySet()){
+			dict[index] = c;
+			index++;
+		}
+		return help(S, T, dict);
+    }
+	
 	
 	public static void main(String [] args){
 		DistincetSubsequences d = new DistincetSubsequences();
 		String S = "anacondastreetracecar";
 		String T = "contra";
-		System.out.println(d.numDistinct(S, T));
+		d.numDistinct(S, T);
+		System.out.println(d.sum);
 	}
 }
