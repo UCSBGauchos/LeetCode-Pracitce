@@ -1,68 +1,27 @@
 package leetcodePractice;
 
 public class LongestConSeq {
-	public void mergeSort(int [] array, int start, int end){
-		if(start<end){
-			int mid = (start+end)/2;
-			mergeSort(array, start, mid);
-			mergeSort(array, mid+1, end);
-			merge(array, start, mid, end);
-		}
-	}
-	public void merge(int [] array, int start, int mid, int end){
-		int left = start;
-		int right = mid+1;
-		int [] helper = new int[array.length];
-		int tmpIndex = 0;
-		int index= start;
-		for(int i: array){
-			helper[tmpIndex] = i;
-			tmpIndex++;
-		}
-		while(left<=mid&&right<=end){
-			if(helper[left]<=helper[right]){
-				array[index] = helper[left];
-				left++;
-			}else{
-				array[index] = helper[right];
-				right++;
-			}
-			index++;
-		}
-		int remain = mid - left;
-		if(remain>=0){
-			while(left<=mid){
-				array[index] = helper[left];
-				left++;
-				index++;
-			}
-		}
-	}
 	
-	public int longestConsecutive(int [] num){
-		mergeSort(num, 0,num.length-1);
-		int [] helper = new int[num.length-1];
-		for(int i=1;i<num.length;i++){
-			helper[i-1] = num[i]-num[i-1];
-		}
-		int longest = 0;
-		int number = 0;
-		for(int i:helper){
-			if(i==1){
-				number++;
-			}else{
-				if(number>longest){
-					longest = number;
+	public int longestConsecutive(int[] num) {
+		int max = 1;
+		int count = 1;
+		java.util.Arrays.sort(num);
+		for(int i=0; i<num.length-1; i++){
+			if(num[i+1]-num[i]==1){
+				count++;
+				if(count>=max){
+					max = count;
 				}
-				number=0;
+			}else if(num[i+1]-num[i]>=2){
+				count = 1;
 			}
 		}
-		return longest+1;
-	}
+		return max;
+    }
 	
 	public static void main(String [] args){
-		int [] array = {100, 101,102, 103, 104,4, 200, 1, 3, 2};
-		LongestConSeq lcs = new LongestConSeq();
-		System.out.println("lcs is "+lcs.longestConsecutive(array));
+		LongestConSeq l = new LongestConSeq();
+		int [] array = {1,2,0,1};
+		System.out.println(l.longestConsecutive(array));
 	}
 }
