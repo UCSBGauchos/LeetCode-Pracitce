@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class RecordList {
 	
 	public void reorderList(ListNode head){
+		if(head == null){
+			return;
+		}
 		ArrayList<ListNode> cache = new ArrayList<ListNode>();
 		while(head!=null){
 			cache.add(head);
