@@ -2,41 +2,46 @@ package leetcodePractice;
 
 public class GasStation {
 	
-	public boolean help(int curIndex, int oil, int finish, int [] gas, int [] cost){
-		//System.out.println("Has finish "+finish);
-		//System.out.println("Now at "+curIndex);
-		int realIndex = curIndex%gas.length;
-		//System.out.println("Need "+cost[realIndex]+" to go next");
-		finish = finish+1;
-		if(finish == gas.length){
-			return true;
+	public int help(int tank, int start, int current, int index, int length, int [] gas, int [] cost){
+		if(index == length-1){
+			return start;
 		}
-		oil = oil+gas[realIndex];
-		System.out.println("Now has "+oil+" oil");
-		if(oil>=cost[realIndex]){
-			help(curIndex+1, oil-cost[realIndex], finish, gas, cost);
+		//if can travel
+		tank = tank+gas[current];
+		if(tank>=cost[current]){
+			int newTank = tank-cost[current];
+			int newCur = current+1;
+			int newIndex = index+1;
+			int result = help(newTank, start, newCur, newIndex, length, gas, cost);
+			if(result!=-1){
+				return start;
+			}else{
+				return -1;
+			}
 		}else{
-			return false;
+			return -1;
 		}
-		return true;
 	}
 	
 	public int canCompleteCircuit(int[] gas, int[] cost) {
-		for(int startIndex = 0; startIndex<gas.length; startIndex++){
-			int finish = 0;
-			int oil = 0;
-			int curIndex = 0;
-			if(help(curIndex, oil, finish, gas, cost)){
-				return startIndex;
+		for(int i=0; i<gas.length; i++){
+			int index = 0;
+			int start = i;
+			int length = gas.length;
+			int current = start;
+			int tank = 0;
+			int result = help(tank, start, current, index, length, gas, cost);
+			if(result != -1){
+				return result;
 			}
 		}
 		return -1;
-    }
+	} 
 	
 	public static void main(String [] args){
 		GasStation g = new GasStation();
-		int [] gas = {1,2,3,4,5};
-		int [] cost = {1,2,3,4,5};
+		int [] gas = {1,2,3};
+		int [] cost = {1,2,3};
 		System.out.println(g.canCompleteCircuit(gas, cost));		
 	}
 }
