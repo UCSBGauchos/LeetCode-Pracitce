@@ -1,31 +1,37 @@
 package leetcodePractice;
 
+import java.util.ArrayList;
+
 public class RotateList {
 	
 	public ListNode rotateRight(ListNode head, int n) {
+		
 		if(head == null){
 			return null;
 		}
-		ListNode fast = head;
-		ListNode slow = head;
+		ArrayList<ListNode> list = new ArrayList<ListNode>();
 		ListNode point = head;
-		for(int i=0; i<n; i++){
-			fast = fast.next;
-		}
-		while(fast!=null){
-			slow = slow.next;
-			fast = fast.next;
-		}
-		while(point.next!=slow){
+		while(point!=null){
+			list.add(point);
 			point = point.next;
 		}
-		point.next = null;
-		point = slow;
-		while(point.next!=null){
-			point = point.next;
+		
+		if(list.size()==1||list.size()==n){
+			return head;
 		}
-		point.next = head;
-		return slow;
+		
+		if(n>list.size()){
+			n = n%list.size();
+		}
+		
+		if(n == 0){
+			return head;
+		}
+
+		int index = list.size()-1-n;
+		list.get(index).next = null;
+		list.get(list.size()-1).next = list.get(0);
+		return list.get(index+1);
     }
 	
 	public static void main(String [] args){
@@ -41,7 +47,7 @@ public class RotateList {
 		n4.next = n5;
 		
 		RotateList r = new RotateList();
-		ListNode head = r.rotateRight(n1, 2);
+		ListNode head = r.rotateRight(n1, 1);
 		while(head!=null){
 			System.out.println(head.val);
 			head = head.next;
