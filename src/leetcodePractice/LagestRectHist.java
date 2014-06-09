@@ -1,51 +1,38 @@
 package leetcodePractice;
 
 public class LagestRectHist {
-	public boolean canBeRect(int i, int j, int [] array){
-		int begin = 0;
-		int end = 0;
-		if(i<=j){
-			begin = i;
-			end = j;
-		}else if(i>j){
-			begin = j;
-			end = i;
-		}
-		for(int index = begin; index<=end; index++){
-			if(array[index]<array[i]){
-				return false;
+	
+	public int get(int [] height, int begin, int end){
+		int min = Integer.MAX_VALUE;
+		for(int i=begin; i<=end; i++){
+			if(height[i]<=min){
+				min = height[i];
 			}
 		}
-		return true;
+		return (end-begin+1)*min;
 	}
 	
-	public int largestRectangleArea(int [] array){
+	public int largestRectangleArea(int[] height) {
+		int begin = 0;
+		int end = height.length-1;
 		int max = 0;
-		for(int i=0; i<array.length; i++){
-			int sumLeft = 0;
-			int sumRight = 0;
-			int sum = 0;
-			for(int j=i; j>=0; j--){
-				if(canBeRect(i, j, array)){
-					sumLeft = array[i]*(Math.abs(i-j)+1);
-				}
+		while(begin<end){
+			int result = get(height, begin, end);
+			if(result>max){
+				max = result;
 			}
-			for(int j=i+1; j<array.length; j++){
-				if(canBeRect(i, j, array)){
-					sumRight = array[i]*(Math.abs(i-j));
-				}
-			}
-			sum = sumLeft+sumRight;
-			if(sum>max){
-				max = sum;
+			if(height[begin]<=height[end]){
+				begin++;
+			}else{
+				end--;
 			}
 		}
 		return max;
-	}
+    }
+	
 	public static void main(String [] args){
-		int [] array = {2,1,2};
-		LagestRectHist lrh = new LagestRectHist();
-		System.out.println(lrh.largestRectangleArea(array));
-		
+		LagestRectHist l = new LagestRectHist();
+		int [] rect = {2,1,5,6,2,3};
+		System.out.println(l.largestRectangleArea(rect));
 	}
 }
