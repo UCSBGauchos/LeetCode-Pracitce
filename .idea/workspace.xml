@@ -27,10 +27,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/2.0/leetcodePractice/1119. 删除字符串中的元音/Solution.java">
+        <entry file="file://$PROJECT_DIR$/src/2.0/leetcodePractice/1064. 不动点/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-180">
-              <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="270">
+              <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/2.0/leetcodePractice/1064. 不动点/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="120">
+                <caret line="4" column="57" lean-forward="true" selection-start-line="4" selection-end-line="4" selection-end-column="57" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -40,7 +52,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="120">
-                <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+                <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
               </first_editor>
               <second_editor />
             </state>
@@ -58,12 +70,14 @@
         <option value="$PROJECT_DIR$/src/2.0/leetcodePractice/README.md" />
         <option value="$PROJECT_DIR$/src/2.0/leetcodePractice/1119. 删除字符串中的元音/Solution.java" />
         <option value="$PROJECT_DIR$/src/2.0/leetcodePractice/1119. 删除字符串中的元音/README.md" />
+        <option value="$PROJECT_DIR$/src/2.0/leetcodePractice/1064. 不动点/Solution.java" />
+        <option value="$PROJECT_DIR$/src/2.0/leetcodePractice/1064. 不动点/README.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1956" />
-    <option name="y" value="19" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="1961" />
+    <option name="y" value="48" />
     <option name="width" value="1920" />
     <option name="height" value="996" />
   </component>
@@ -110,6 +124,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="2.0" type="462c0819:PsiDirectoryNode" />
               <item name="leetcodePractice" type="462c0819:PsiDirectoryNode" />
+              <item name="1064. 不动点" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LeetCode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LeetCode-Pracitce" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="leetcodePractice" type="462c0819:PsiDirectoryNode" />
               <item name="1119. 删除字符串中的元音" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -120,7 +142,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564971084678" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564975438326" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
@@ -169,10 +191,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1956" y="19" width="1920" height="996" extended-state="0" />
+    <frame x="1961" y="48" width="1920" height="996" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26021504" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12795699" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -182,7 +204,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.329718" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.35266823" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3549884" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -217,8 +239,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/2.0/leetcodePractice/1119. 删除字符串中的元音/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="60">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/2.0/leetcodePractice/1064. 不动点/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/2.0/leetcodePractice/1064. 不动点/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="120">
+            <caret line="4" column="57" lean-forward="true" selection-start-line="4" selection-end-line="4" selection-end-column="57" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
@@ -226,7 +265,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="120">
-            <caret line="4" column="57" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+            <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           </first_editor>
           <second_editor />
         </state>
